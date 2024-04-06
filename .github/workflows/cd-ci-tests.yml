@@ -1,8 +1,6 @@
 name: " 🚀 WP Lab theme tests "
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
  
 jobs:
   checks:

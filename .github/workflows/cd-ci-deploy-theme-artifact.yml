@@ -1,8 +1,6 @@
 name: " 🚀 WP Lab deploy "
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
  
 jobs:
   checks:
@@ -45,21 +43,21 @@ jobs:
         rsh: -o PubkeyAcceptedKeyTypes=*ssh-rsa -o HostKeyAlgorithms=+ssh-rsa
         path: ./package/
         remote_path: ./html/wp-content/themes/wplabtheme
-        remote_host: ${{ secrets.THEME_HOST }}
-        remote_port: ${{ secrets.HOST_PORT }}
-        remote_user: ${{ secrets.HOST_USER }}
-        remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
-        remote_key_pass: ${{ secrets.HOST_PASS }}
+        remote_host: ${{ secrets.SERVER_DEV_HOST }}
+        remote_port: ${{ secrets.SERVER_DEV_PORT }}
+        remote_user: ${{ secrets.SERVER_DEV_USER }}
+        remote_key: ${{ secrets.SSH_DEV_PRIVATE_KEY }}
+        remote_key_pass: ${{ secrets.SERVER_DEV_PASS }}
         
-    - name: Accesing to server and unzip
+    - name: Cleaning
       uses: matheusvanzan/sshpass-action@v2
       with:
-        host: ${{ secrets.THEME_HOST }}
-        user: ${{ secrets.HOST_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY}}
-        pass: ${{ secrets.HOST_PASS }}
+        host: ${{ secrets.SERVER_DEV_HOST }}
+        user: ${{ secrets.SERVER_DEV_USER }}
+        key: ${{ secrets.SSH_DEV_PRIVATE_KEY}}
+        pass: ${{ secrets.SERVER_DEV_PASS }}
         run: |
-          cd ${{secrets.THEME_PATH}}
+          cd ${{secrets.PLUGIN_DEV_PATH}}
           pwd
           ls
           rm mix-manifest.json
