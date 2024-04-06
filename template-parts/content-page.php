@@ -16,7 +16,7 @@
 
 	<?php wplabtheme_post_thumbnail(); ?>
 
-	<div class="entry-content">
+	<div class="md:container md:mx-auto entry-content">
 		<?php
 		the_content();
 

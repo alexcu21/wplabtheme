@@ -1,16 +1,19 @@
 <?php
 /**
- * WP Lab Them functions and definitions
+ * WP Lab Theme functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package WP_Lab_Them
+ * @package WP_Lab_Theme
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '1.0.0' );
 }
+
+// Require the composer autoload for getting conflict-free access to enqueue
+require_once __DIR__ . '/vendor/autoload.php';
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -140,7 +143,6 @@ add_action( 'widgets_init', 'wplabtheme_widgets_init' );
 function wplabtheme_scripts() {
 	wp_enqueue_style( 'wplabtheme-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'wplabtheme-style', 'rtl', 'replace' );
-
 	wp_enqueue_script( 'wplabtheme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -176,3 +178,40 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+// Do stuff through this plugin
+class ThemeInit {
+	/**
+	 * @var \WPackio\Enqueue
+	 */
+	public $enqueue;
+
+	public function __construct() {
+		// It is important that we init the Enqueue class right at the plugin/theme load time
+		$this->enqueue = new \WPackio\Enqueue(
+			// Name of the project, same as `appName` in wpackio.project.js
+			'wpLabTheme',
+			// Output directory, same as `outputPath` in wpackio.project.js
+			'dist',
+			// Version of your plugin
+			'1.0.0',
+			// Type of your project, same as `type` in wpackio.project.js
+			'theme',
+			// Plugin location, pass false in case of theme.
+			false,
+			// Type of the theme, 'regular' or 'child'
+            'regular'
+		);
+		// Enqueue a few of our entry points
+		add_action( 'wp_enqueue_scripts', [ $this, 'theme_enqueue' ] );
+	}
+
+	public function theme_enqueue() {
+		// Enqueue files[0] (name = app) - entryPoint main
+		$this->enqueue->enqueue( 'theme', 'main', array() );
+		
+	}
+}
+
+
+// Init
+new ThemeInit();
