@@ -44,7 +44,7 @@ jobs:
         switches: -avzr --delete --exclude="node_modules" --exclude=".github" --exclude=".git"
         rsh: -o PubkeyAcceptedKeyTypes=*ssh-rsa -o HostKeyAlgorithms=+ssh-rsa
         path: ./package/
-        remote_path: ./html/wp-content/themes/wplabtheme
+        remote_path: ${{secrets.THEME_PATH}}
         remote_host: ${{ secrets.THEME_HOST }}
         remote_port: ${{ secrets.HOST_PORT }}
         remote_user: ${{ secrets.HOST_USER }}
