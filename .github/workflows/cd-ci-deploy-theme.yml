@@ -1,4 +1,4 @@
-name: " 🚀 WP Lab deploy "
+name: " 🚀 WP Lab deploy to Prod "
 on:
   push:
     branches:
