@@ -47,7 +47,6 @@ jobs:
       uses: burnett01/rsync-deployments@6.0.0
       with:
         switches: -avzr --delete --exclude="node_modules" --exclude=".github" --exclude=".git"
-        rsh: -o PubkeyAcceptedKeyTypes=*ssh-rsa -o HostKeyAlgorithms=+ssh-rsa
         path: ./package/
         remote_path: ${{secrets.THEME_PATH}}
         remote_host: ${{ secrets.THEME_HOST }}
@@ -72,5 +71,5 @@ jobs:
           rm ns-script.js.LICENSE.txt
           rm ns-styles.css
           rm -rf .git
-          unzip custom-gutenberg-blocks-nicasource.zip
+          unzip wplabtheme.zip
           rm *.zip
