@@ -45,7 +45,6 @@ jobs:
       uses: burnett01/rsync-deployments@6.0.0
       with:
         switches: -avzr --delete --exclude="node_modules" --exclude=".github" --exclude=".git"
-        legacy_allow_rsa_hostkeys: "true"
         path: ./package/
         remote_path: ${{secrets.THEME_PATH}}
         remote_host: ${{ secrets.THEME_HOST }}
