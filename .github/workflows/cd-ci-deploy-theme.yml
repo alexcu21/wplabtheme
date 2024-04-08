@@ -51,7 +51,7 @@ jobs:
         remote_host: ${{ secrets.THEME_HOST }}
         remote_port: ${{ secrets.HOST_PORT }}
         remote_user: ${{ secrets.HOST_USER }}
-        remote_key: ${{ secrets.DEPLOY_KEY }}
+        remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
         remote_key_pass: ${{ secrets.HOST_PASS }}
         
     - name: Accesing to server and unzip
