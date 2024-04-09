@@ -38,8 +38,12 @@ jobs:
     - name: Install dependencies
       run: npm install
           
-    - name: Zip Theme
-      run: npm run archive
+    - name: build and Zip Theme
+      run: |
+        npm run build
+        pwd
+        ls
+        npm run archive
         
     - name: Deploy Theme
       uses: burnett01/rsync-deployments@6.0.0
