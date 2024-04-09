@@ -57,6 +57,7 @@ jobs:
       uses: matheusvanzan/sshpass-action@v2
       with:
         host: ${{ secrets.THEME_HOST }}
+        port: ${{ secrets.HOST_PORT }}
         user: ${{ secrets.HOST_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY}}
         pass: ${{ secrets.HOST_PASS }}
