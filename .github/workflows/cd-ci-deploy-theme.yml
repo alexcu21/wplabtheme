@@ -67,7 +67,8 @@ jobs:
           ls
           cd wplabtheme
           mv * ..
-          cd ${{secrets.THEME_PATH}}
+          cd ..
           rmdir -p wplabtheme
-          rm -rf .git
           rm *.zip
+          rm -rf .git
+          
