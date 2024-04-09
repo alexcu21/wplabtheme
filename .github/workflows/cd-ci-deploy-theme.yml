@@ -58,16 +58,15 @@ jobs:
       with:
         host: ${{ secrets.THEME_HOST }}
         user: ${{ secrets.HOST_USER }}
-        key: ${{ secrets.DEPLOY_KEY}}
+        key: ${{ secrets.SSH_PRIVATE_KEY}}
         pass: ${{ secrets.HOST_PASS }}
         run: |
           cd ${{secrets.THEME_PATH}}
           pwd
           ls
-          rm mix-manifest.json
-          rm ns-script.js
-          rm ns-script.js.LICENSE.txt
-          rm ns-styles.css
+          cd wplabtheme
+          mv * ..
+          cd ${{secrets.THEME_PATH}}
+          rmdir -p wplabtheme
           rm -rf .git
-          unzip wplabtheme.zip
           rm *.zip
