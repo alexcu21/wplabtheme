@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c094ef336c5fa19fcda9f180519aaa2",
+    "content-hash": "0faf922b064e70636297424497439619",
     "packages": [
         {
             "name": "wpackio/enqueue",
@@ -1239,7 +1239,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.2"
+        "php": ">=8.1.2||^7.3||^8.2 ||^7.4"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
