@@ -16,6 +16,8 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 
 	<?php wp_head(); ?>
 </head>
@@ -45,8 +47,10 @@
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation">
+		<nav id="site-navigation" class="main-navigation z-20 relative lg:shadow-md">
+		<div class="flex justify-between py-8 pb-12 items-center lg:h-52 lg:py-0 px-5 container mx-auto relative">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'wplabtheme' ); ?></button>
+			<div class="hidden space-x-8 lg:flex lg:items-center">
 			<?php
 			wp_nav_menu(
 				array(
@@ -55,5 +59,7 @@
 				)
 			);
 			?>
+			</div>
+		</div>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
