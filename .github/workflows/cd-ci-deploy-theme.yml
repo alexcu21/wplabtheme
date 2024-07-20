@@ -37,7 +37,7 @@ jobs:
         
     - name: Install dependencies
       run: |
-        composer install -o
+        composer install
         npm install
           
     - name: build and Zip Theme
