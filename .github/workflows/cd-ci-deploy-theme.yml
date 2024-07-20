@@ -36,7 +36,9 @@ jobs:
         node-version: 16.x
         
     - name: Install dependencies
-      run: npm install
+      run: |
+        composer install
+        npm install
           
     - name: build and Zip Theme
       run: |
