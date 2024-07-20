@@ -37,7 +37,7 @@ jobs:
         
     - name: Install dependencies
       run: |
-        composer install
+        composer install --ignore-platform-reqs
         npm install
           
     - name: build and Zip Theme
