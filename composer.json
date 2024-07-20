@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
+        "php": ">=8.2",
         "wpackio/enqueue": "^3.5"
     },
     "require-dev": {
